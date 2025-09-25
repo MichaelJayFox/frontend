@@ -16,7 +16,21 @@
         [disabled]="!text">
         Отправить
       </button>
-      
+      <div>
+        <h3>Read Saved Data</h3>
+        <button 
+          (click)="readData()"
+          >
+          Read Data
+        </button>
+        <br>
+        <textarea 
+          readonly
+          rows="6"
+          [value]="readText">
+        </textarea>
+      </div>
+
       <div *ngIf="message" [style]="messageStyle">
         {{ message }}
       </div>

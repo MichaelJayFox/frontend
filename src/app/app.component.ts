@@ -13,6 +13,7 @@ import { HttpClient } from '@angular/common/http';
 export class AppComponent {
   text: string = '';
   message: string = '';
+  readText: string = ''; 
 
   messageStyle = {
     'margin-top': '10px',
@@ -39,4 +40,23 @@ export class AppComponent {
       }
     });
   }
+  
+  readData() {
+    this.http.get('http://localhost:3000/read', { 
+      responseType: 'text' 
+    }).subscribe({
+      next: (response) => {
+        this.readText = response;
+        this.showMessage('Data loaded successfully', 'success');
+      },
+      error: (error) => {
+        this.showMessage('Error reading data: ' + error.error, 'error');
+      }
+    });
+  }
+  private showMessage(msg: string, type: 'success' | 'error') {
+    this.message = msg;
+    setTimeout(() => this.message = '', 3000);
+  }
+  
 }
