@@ -1,0 +1,24 @@
+
+    <div style="padding: 20px; max-width: 600px; margin: 0 auto;">
+      <h1>Frontend 1.0</h1>
+      
+      <textarea 
+        [(ngModel)]="text" 
+
+        rows="4"
+        style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px;">
+      </textarea>
+      
+      <br>
+      
+      <button 
+        (click)="sendText()" 
+        [disabled]="!text">
+        Отправить
+      </button>
+      
+      <div *ngIf="message" [style]="messageStyle">
+        {{ message }}
+      </div>
+    </div>
+  
